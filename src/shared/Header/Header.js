@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
+import { AuthContext } from "../../context/AuthProvider";
 const Header = () => {
-  const user = {
-    email: "",
-  };
+  const { user, logout } = useContext(AuthContext);
   const navlinks = (
     <>
       <li className="capitalize">
@@ -22,11 +21,23 @@ const Header = () => {
   const userProf = (
     <>
       <div className="dropdown dropdown-end">
-        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-          <div className="w-10 rounded-full">
-            <img src="https://placeimg.com/80/80/people" />
-          </div>
-        </label>
+        {user?.photoURL ? (
+          <>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img src={user?.photoURL} alt="" />
+              </div>
+            </label>
+          </>
+        ) : (
+          <>
+            {" "}
+            <div className="w-10 rounded-full">
+              <FaUser />
+            </div>
+          </>
+        )}
+
         <ul
           tabIndex={0}
           className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
@@ -41,7 +52,7 @@ const Header = () => {
             <Link>Settings</Link>
           </li>
           <li>
-            <Link>Logout</Link>
+            <button onClick={() => logout()}>Logout</button>
           </li>
         </ul>
       </div>

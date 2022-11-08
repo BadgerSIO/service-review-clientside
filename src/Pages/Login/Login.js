@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const Login = () => {
+  const { googleSignUp } = useContext(AuthContext);
+  const handleGoogle = () => {
+    googleSignUp()
+      .then(() => {})
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="min-h-[83vh] container flex items-center justify-center">
       <div className="w-[500px]">
@@ -25,7 +32,10 @@ const Login = () => {
           </button>
         </form>
         <p className="text-center py-5 font-titles">OR</p>
-        <button className="flex items-center justify-center mx-auto border py-2 px-4 hover:bg-black/50">
+        <button
+          onClick={handleGoogle}
+          className="flex items-center justify-center mx-auto border py-2 px-4 hover:bg-black/50"
+        >
           <FaGoogle className="mr-3" /> Signup with Google
         </button>
         <p className="text-center pt-5">

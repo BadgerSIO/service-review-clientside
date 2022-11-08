@@ -4,7 +4,7 @@ import SingleCard from "./SingleCard";
 
 const BlogSec = () => {
   const [blogs, setBlogs] = useState([]);
-  console.log(blogs);
+
   useEffect(() => {
     fetch(`http://localhost:5000/blogs`)
       .then((res) => res.json())
