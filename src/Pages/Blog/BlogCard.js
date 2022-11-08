@@ -28,7 +28,11 @@ const BlogCard = ({ blog }) => {
       <div className="descriptions border-b pb-5">
         <p className="text-xl leading-loose">{description}</p>
         {list ? (
-          list.map((sl) => <li className="text-xl leading-loose">{sl}</li>)
+          list.map((sl) => (
+            <li key={sl} className="text-xl leading-loose">
+              {sl}
+            </li>
+          ))
         ) : (
           <></>
         )}

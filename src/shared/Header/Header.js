@@ -1,12 +1,15 @@
 import React from "react";
-import { Link, NavLink, useLoaderData } from "react-router-dom";
-import { FaUser, IconName } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 const Header = () => {
   const user = {
     email: "",
   };
   const navlinks = (
     <>
+      <li className="capitalize">
+        <NavLink to="/">Home</NavLink>
+      </li>
       <li className="capitalize">
         <NavLink to="/services">services</NavLink>
       </li>
