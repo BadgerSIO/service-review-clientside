@@ -18,9 +18,14 @@ const Header = () => {
         <NavLink to="/blog">Blog</NavLink>
       </li>
       {user?.uid ? (
-        <li className="capitalize">
-          <NavLink to="/myreview">myreview</NavLink>
-        </li>
+        <>
+          <li className="capitalize">
+            <NavLink to="/myreview">myreview</NavLink>
+          </li>
+          <li className="capitalize">
+            <NavLink to="/addservice">add service</NavLink>
+          </li>
+        </>
       ) : (
         <></>
       )}
