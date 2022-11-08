@@ -14,7 +14,7 @@ const BlogSec = () => {
   }, []);
   return (
     <div className="py-20 container">
-      <h1 className="text-5xl font-titles">Our Blogs</h1>
+      <h1 className="text-5xl font-titles mb-10">Our Blogs</h1>
       <div className="grid lg:grid-cols-3 lg:gap-5 mt-5">
         {blogs.map((blog) => (
           <SingleCard key={blog._id} blog={blog}></SingleCard>

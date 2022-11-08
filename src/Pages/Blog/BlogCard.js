@@ -17,7 +17,7 @@ const BlogCard = ({ blog }) => {
       </h1>
       <p className="mb-5">Published: {published}</p>
       <img src={blogImage} alt={blogTitle} className="w-2/4" />
-      <div className="authorinfo my-5 flex items-center space-x-5 border-b pb-5">
+      <div className="authorinfo my-5 flex items-center space-x-5 border-b border-b-borderTheme pb-5">
         <img
           src={authorImage}
           alt={authorName}
@@ -25,7 +25,7 @@ const BlogCard = ({ blog }) => {
         />
         <h3>{authorName}</h3>
       </div>
-      <div className="descriptions border-b pb-5">
+      <div className="descriptions border-b border-b-borderTheme pb-5">
         <p className="text-xl leading-loose">{description}</p>
         {list ? (
           list.map((sl) => (

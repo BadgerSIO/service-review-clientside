@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="container lg:h-[700px] flex items-center border-b ">
+    <div className="container lg:h-[700px] flex items-center border-b border-b-borderTheme ">
       <div>
         <h3 className="uppercase text-lg">WE ARE HERE TO SERVE</h3>
         <h1 className="text-6xl font-titles mb-5 leading-snug">

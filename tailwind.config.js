@@ -8,7 +8,11 @@ module.exports = {
     fontFamily: {
       titles: ["Playfair Display", "serif"],
     },
-    extend: {},
+    extend: {
+      colors: {
+        borderTheme: "#30363d",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };
