@@ -2,10 +2,12 @@ import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../customHooks/useTitle";
 
 const Register = () => {
   const { googleSignUp, createuser } = useContext(AuthContext);
   const navigate = useNavigate();
+  useTitle("Register");
   const handleGoogle = () => {
     googleSignUp()
       .then(() => {})

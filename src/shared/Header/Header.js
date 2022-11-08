@@ -31,11 +31,13 @@ const Header = () => {
       <div className="dropdown dropdown-end">
         {user ? (
           <>
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <label tabIndex={0} className="btn  btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user.photoURL} alt="" />
+                <img src={user?.photoURL} alt="" />
               </div>
-              <h1 className="text-white">{user.displayName.split(" ")[0]}</h1>
+              <h1 className="text-white pt-2">
+                {user?.displayName?.split(" ")[0]}
+              </h1>
             </label>
           </>
         ) : (
