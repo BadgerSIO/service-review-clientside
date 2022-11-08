@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthProvider";
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+
   const navlinks = (
     <>
       <li className="capitalize">
@@ -16,25 +17,35 @@ const Header = () => {
       <li className="capitalize">
         <NavLink to="/blog">Blog</NavLink>
       </li>
+      {user?.uid ? (
+        <li className="capitalize">
+          <NavLink to="/myreview">myreview</NavLink>
+        </li>
+      ) : (
+        <></>
+      )}
     </>
   );
   const userProf = (
     <>
       <div className="dropdown dropdown-end">
-        {user?.photoURL ? (
+        {user ? (
           <>
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src={user?.photoURL} alt="" />
+                <img src={user.photoURL} alt="" />
               </div>
+              <h1 className="text-white">{user.displayName.split(" ")[0]}</h1>
             </label>
           </>
         ) : (
           <>
             {" "}
-            <div className="w-10 rounded-full">
-              <FaUser />
-            </div>
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <FaUser />
+              </div>
+            </label>
           </>
         )}
 

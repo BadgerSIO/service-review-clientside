@@ -1,19 +1,36 @@
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const Register = () => {
-  const { googleSignUp } = useContext(AuthContext);
+  const { googleSignUp, createuser } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleGoogle = () => {
     googleSignUp()
       .then(() => {})
       .catch((err) => console.log(err));
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const uname = form.name.value;
+    const uphoto = form.photo.value;
+
+    createuser(email, password, uname, uphoto)
+      .then((res) => {
+        console.log(res);
+        navigate("/");
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="min-h-[83vh] container flex items-center justify-center">
       <div className="w-[500px]">
-        <form className="w-full border p-10">
+        <form onSubmit={handleSubmit} className="w-full border p-10">
           <h1 className="text-3xl pb-10 font-titles font-bold">
             Register Here
           </h1>
