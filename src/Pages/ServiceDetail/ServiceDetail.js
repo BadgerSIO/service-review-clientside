@@ -1,5 +1,6 @@
 import React from "react";
 import { ScrollRestoration, useLoaderData } from "react-router-dom";
+import useTitle from "../../customHooks/useTitle";
 
 const ServiceDetail = () => {
   const service = useLoaderData();
@@ -12,6 +13,7 @@ const ServiceDetail = () => {
     author,
     _id,
   } = service;
+  useTitle(serviceName);
   return (
     <div className="container py-5">
       <div>

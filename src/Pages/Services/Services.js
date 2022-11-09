@@ -4,7 +4,7 @@ import useTitle from "../../customHooks/useTitle";
 import ServiceCard from "../Home/ServicesSec/ServiceCard";
 
 const Services = () => {
-  useTitle("My Reviews");
+  useTitle("Services");
   const services = useLoaderData();
   return (
     <div className="container">

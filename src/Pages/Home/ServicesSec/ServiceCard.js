@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { useNavigate } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
   const {
@@ -8,7 +9,7 @@ const ServiceCard = ({ service }) => {
     serviceImage,
     serviceDescription,
     firmName,
-    author,
+
     _id,
   } = service;
   const navigate = useNavigate();
@@ -18,11 +19,15 @@ const ServiceCard = ({ service }) => {
   return (
     <div className="card w-full bg-base-100 shadow-xl">
       <figure className="w-full">
-        <img
-          src={serviceImage}
-          alt={serviceName}
-          className="w-full h-72 object-cover"
-        />
+        <PhotoProvider>
+          <PhotoView src={serviceImage}>
+            <img
+              src={serviceImage}
+              alt={serviceName}
+              className="w-full h-72 object-cover"
+            />
+          </PhotoView>
+        </PhotoProvider>
       </figure>
       <div className="card-body">
         <h2 className="card-title font-titles text-2xl">{serviceName}</h2>

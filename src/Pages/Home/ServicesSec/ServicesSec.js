@@ -8,13 +8,11 @@ const ServicesSec = () => {
   const [services, setServices] = useState([]);
   console.log(services);
   useEffect(() => {
-    if (user?.email) {
-      fetch(`http://localhost:5000/lastServices`)
-        .then((res) => res.json())
-        .then((data) => {
-          setServices(data);
-        });
-    }
+    fetch(`http://localhost:5000/lastServices`)
+      .then((res) => res.json())
+      .then((data) => {
+        setServices(data);
+      });
   }, [user?.email]);
   return (
     <div className="py-20 container border-b border-b-borderTheme">
