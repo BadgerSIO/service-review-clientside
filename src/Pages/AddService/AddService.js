@@ -48,6 +48,11 @@ const AddService = () => {
               {...register("serviceName", { required: true })}
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
+            {errors.serviceName && (
+              <span>
+                <small className="text-red-500">This field is required</small>
+              </span>
+            )}
           </div>
           <div>
             <label htmlFor="servicePrice">Service Price</label>
@@ -56,6 +61,11 @@ const AddService = () => {
               {...register("servicePrice", { required: true })}
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
+            {errors.servicePrice && (
+              <span>
+                <small className="text-red-500">This field is required</small>
+              </span>
+            )}
           </div>
           <div>
             <label htmlFor="serviceImage">Service image Url</label>
@@ -64,14 +74,24 @@ const AddService = () => {
               {...register("serviceImage", { required: true })}
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
+            {errors.serviceImage && (
+              <span>
+                <small className="text-red-500">This field is required</small>
+              </span>
+            )}
           </div>
           <div>
             <label htmlFor="firmName">Firm that provide the service</label>
             <input
-              type="url"
+              type="text"
               {...register("firmName", { required: true })}
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
+            {errors.firmName && (
+              <span>
+                <small className="text-red-500">This field is required</small>
+              </span>
+            )}
           </div>
           <div className="lg:col-span-2">
             <label htmlFor="serviceDescription">Service Description</label>
@@ -82,16 +102,14 @@ const AddService = () => {
               rows="10"
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             ></textarea>
+
+            {errors.serviceDescription && (
+              <span>
+                <small className="text-red-500">This field is required</small>
+              </span>
+            )}
           </div>
         </div>
-        <p>
-          <small>
-            {errors.serviceName &&
-              errors.servicePrice &&
-              errors.serviceImage &&
-              errors.serviceDescription && <span>This field is required</span>}
-          </small>
-        </p>
         <button
           type="submit"
           className="py-2 px-3 capitalize border-white border mt-5"
