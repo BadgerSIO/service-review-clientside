@@ -12,7 +12,7 @@ const BlogCard = ({ blog }) => {
   } = blog;
   return (
     <div className="container my-10 ">
-      <h1 className="text-3xl font-titles font-semibold mb-5 text-white">
+      <h1 className="text-2xl md:text-3xl lg:text-5xl font-titles font-semibold mb-5 text-white">
         {blogTitle}
       </h1>
       <p className="mb-5">Published: {published}</p>
