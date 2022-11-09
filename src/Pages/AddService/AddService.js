@@ -1,17 +1,38 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
 const AddService = () => {
   const { user } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
+    reset,
+    formState,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     data["author"] = user.email;
+    fetch(`http://localhost:5000/addService`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result) {
+          toast.success("New Service Added!");
+        }
+      });
     console.log(data);
   };
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset();
+    }
+  }, [formState, reset]);
   return (
     <div className="min-h-[83vh] container py-5">
       <h1 className="text-2xl font-titles">Add Service</h1>
@@ -70,6 +91,7 @@ const AddService = () => {
           submit
         </button>
       </form>
+      <Toaster></Toaster>
     </div>
   );
 };
