@@ -7,6 +7,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyReviews from "../Pages/MyReviews/MyReviews";
 import Register from "../Pages/Register/Register";
+import ServiceDetail from "../Pages/ServiceDetail/ServiceDetail";
 import Services from "../Pages/Services/Services";
 import PrivateRoute from "./PrivateRoute";
 
@@ -33,8 +34,14 @@ export const routes = createBrowserRouter([
         element: <Services></Services>,
       },
       {
+        path: "/servicedetail/:id",
+        loader: async ({ params }) =>
+          fetch(`http://localhost:5000/sdetail/${params.id}`),
+        element: <ServiceDetail></ServiceDetail>,
+      },
+      {
         path: "/blog",
-        loader: () => fetch(`http://localhost:5000/blogs`),
+        loader: async () => fetch(`http://localhost:5000/blogs`),
         element: <Blog></Blog>,
       },
       {
