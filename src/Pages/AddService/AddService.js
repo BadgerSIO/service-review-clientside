@@ -57,11 +57,19 @@ const AddService = () => {
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
           </div>
-          <div className="lg:col-span-2">
+          <div>
             <label htmlFor="serviceImage">Service image Url</label>
             <input
               type="url"
               {...register("serviceImage", { required: true })}
+              className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
+            />
+          </div>
+          <div>
+            <label htmlFor="firmName">Firm that provide the service</label>
+            <input
+              type="url"
+              {...register("firmName", { required: true })}
               className="w-full border border-borderTheme mt-5 p-2 focus:outline-none focus:border-primary"
             />
           </div>
