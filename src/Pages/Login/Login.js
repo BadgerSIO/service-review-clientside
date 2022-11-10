@@ -1,16 +1,20 @@
 import React, { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import useTitle from "../../customHooks/useTitle";
 const Login = () => {
   const { googleSignUp, login } = useContext(AuthContext);
   const navigate = useNavigate();
   useTitle("Login");
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   const handleGoogle = () => {
     googleSignUp()
-      .then(() => {})
+      .then(() => {
+        navigate(from, { replace: true });
+      })
       .catch((err) => console.log(err));
   };
   const handleSubmit = (e) => {
@@ -20,7 +24,7 @@ const Login = () => {
     const password = form.password.value;
     login(email, password)
       .then((res) => {
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => console.log(err));
   };

@@ -6,7 +6,7 @@ import ServiceCard from "./ServiceCard";
 const ServicesSec = () => {
   const { user } = useContext(AuthContext);
   const [services, setServices] = useState([]);
-  console.log(services);
+
   useEffect(() => {
     fetch(`http://localhost:5000/lastServices`)
       .then((res) => res.json())
