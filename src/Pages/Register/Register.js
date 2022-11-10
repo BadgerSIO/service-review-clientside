@@ -60,10 +60,10 @@ const Register = () => {
     );
   } else {
     return (
-      <div className="min-h-[83vh] container flex items-center justify-center">
-        <div className="w-[500px]">
+      <div className="min-h-[83vh] container flex items-center justify-center px-2">
+        <div className="w-full sm:w-[500px]">
           <form onSubmit={handleSubmit} className="w-full border p-10">
-            <h1 className="text-3xl pb-10 font-titles font-bold">
+            <h1 className="text-xl md:text-3xl pb-5 sm:pb-10 font-titles font-bold">
               Register Here
             </h1>
             <input

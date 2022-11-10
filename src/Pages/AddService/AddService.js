@@ -36,7 +36,7 @@ const AddService = () => {
     }
   }, [formState, reset]);
   return (
-    <div className="min-h-[83vh] container py-5">
+    <div className="min-h-[83vh] container py-5 px-2">
       <h1 className="text-2xl font-titles">Add Service</h1>
       <h3>Please fill the form to add a new service</h3>
       <form

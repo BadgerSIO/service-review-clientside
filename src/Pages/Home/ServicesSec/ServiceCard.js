@@ -30,7 +30,9 @@ const ServiceCard = ({ service }) => {
         </PhotoProvider>
       </figure>
       <div className="card-body">
-        <h2 className="card-title font-titles text-2xl">{serviceName}</h2>
+        <h2 className="card-title font-titles text-lg md:text-2xl">
+          {serviceName}
+        </h2>
         <p>
           {serviceDescription.length > 5
             ? serviceDescription.substr(0, 100) + "..."

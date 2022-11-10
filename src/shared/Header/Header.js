@@ -40,9 +40,6 @@ const Header = () => {
               <div className="w-10 rounded-full">
                 <img src={user?.photoURL} alt="" />
               </div>
-              <h1 className="text-white pt-2">
-                {user?.displayName?.split(" ")[0]}
-              </h1>
             </label>
           </>
         ) : (
@@ -103,7 +100,10 @@ const Header = () => {
             {navlinks}
           </ul>
         </div>
-        <Link to="/" className="font-title border-2 font-bold   p-2 text-xl">
+        <Link
+          to="/"
+          className="font-title border-2 font-bold   p-2 text-base lg:text-xl"
+        >
           Precision Law
         </Link>
       </div>

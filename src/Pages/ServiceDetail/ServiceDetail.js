@@ -90,7 +90,7 @@ const ServiceDetail = () => {
     }
   };
   return (
-    <div className="container py-5">
+    <div className="container py-5 px-2">
       {/* service part  */}
       <div>
         <h1 className="text-2xl md:text-6xl font-titles text-white mb-5">
@@ -104,7 +104,9 @@ const ServiceDetail = () => {
           alt=""
           className="w-full md:w-4/6 max-h-[500px] object-cover mt-5 mb-10"
         />
-        <p className="text-2xl leading-relaxed">{serviceDescription}</p>
+        <p className="text-lg lg:text-2xl leading-relaxed">
+          {serviceDescription}
+        </p>
         <h6 className="my-5 text-xl">Service Charge: ${servicePrice}</h6>
       </div>
       {/* review part  */}
