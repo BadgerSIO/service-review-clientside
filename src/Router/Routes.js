@@ -6,6 +6,7 @@ import Blog from "../Pages/Blog/Blog";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import MyReviews from "../Pages/MyReviews/MyReviews";
+import UpdateReview from "../Pages/MyReviews/UpdateReview";
 import Register from "../Pages/Register/Register";
 import ServiceDetail from "../Pages/ServiceDetail/ServiceDetail";
 import Services from "../Pages/Services/Services";
@@ -30,18 +31,20 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/services",
-        loader: () => fetch(`http://localhost:5000/allServices`),
+        loader: () =>
+          fetch(`https://precision-law-server.vercel.app/allServices`),
         element: <Services></Services>,
       },
       {
         path: "/servicedetail/:id",
         loader: async ({ params }) =>
-          fetch(`http://localhost:5000/sdetail/${params.id}`),
+          fetch(`https://precision-law-server.vercel.app/sdetail/${params.id}`),
         element: <ServiceDetail></ServiceDetail>,
       },
       {
         path: "/blog",
-        loader: async () => fetch(`http://localhost:5000/blogs`),
+        loader: async () =>
+          fetch(`https://precision-law-server.vercel.app/blogs`),
         element: <Blog></Blog>,
       },
       {
@@ -49,6 +52,18 @@ export const routes = createBrowserRouter([
         element: (
           <PrivateRoute>
             <MyReviews></MyReviews>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/updateReview/:id",
+        loader: async ({ params }) =>
+          fetch(
+            `https://precision-law-server.vercel.app/singleReview/${params.id}`
+          ),
+        element: (
+          <PrivateRoute>
+            <UpdateReview></UpdateReview>
           </PrivateRoute>
         ),
       },

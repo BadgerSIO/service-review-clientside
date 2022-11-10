@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
 import { AuthContext } from "../../context/AuthProvider";
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
-
+  const location = useLocation();
   const navlinks = (
     <>
       <li className="capitalize">
@@ -115,7 +115,7 @@ const Header = () => {
           userProf
         ) : (
           <>
-            <Link to="/login">
+            <Link to="/login" state={{ from: location }} replace>
               <button className="py-2 px-3 border flex items-center justify-center capitalize">
                 <FaUser className="mr-2"></FaUser>login
               </button>

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import {
   Link,
-  Navigate,
   ScrollRestoration,
   useLoaderData,
   useLocation,
@@ -10,6 +9,7 @@ import useTitle from "../../customHooks/useTitle";
 import { AuthContext } from "../../context/AuthProvider";
 import { useForm } from "react-hook-form";
 import ReviewCard from "../../shared/ReviewCard/ReviewCard";
+import toast, { Toaster } from "react-hot-toast";
 const ServiceDetail = () => {
   const { user } = useContext(AuthContext);
   const service = useLoaderData();
@@ -21,11 +21,10 @@ const ServiceDetail = () => {
     serviceImage,
     serviceDescription,
     firmName,
-    author,
     _id,
   } = service;
   useEffect(() => {
-    fetch(`http://localhost:5000/getReviews?serviceId=${_id}`)
+    fetch(`https://precision-law-server.vercel.app/getReviews?serviceId=${_id}`)
       .then((res) => res.json())
       .then((revdata) => {
         setReviews(revdata);
@@ -46,19 +45,23 @@ const ServiceDetail = () => {
     data["serviceId"] = _id;
     data["serviceName"] = serviceName;
     data["date"] = Date.now();
-    console.log(data);
-    fetch(`http://localhost:5000/addReview?email=${user.email}`, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    fetch(
+      `https://precision-law-server.vercel.app/addReview?email=${user.email}`,
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .then((result) => {
-        alert("added");
-        const current = [data, ...reviews];
-        setReviews(current);
+        if (result) {
+          toast.success("Review added ");
+          const current = [data, ...reviews];
+          setReviews(current);
+        }
       });
   };
   useEffect(() => {
@@ -66,6 +69,26 @@ const ServiceDetail = () => {
       reset();
     }
   }, [formState, reset]);
+  const handleDelete = (review) => {
+    const affirm = window.confirm(`Are you sure you want to delete`);
+    if (affirm) {
+      fetch(
+        `https://precision-law-server.vercel.app/deleteReview/${review._id}`,
+        {
+          method: "DELETE",
+        }
+      )
+        .then((res) => res.json())
+        .then((results) => {
+          console.log(results);
+          if (results.deletedCount > 0) {
+            const currentrev = reviews.filter((rev) => rev._id !== review._id);
+            setReviews(currentrev);
+            toast.success("Review deleted");
+          }
+        });
+    }
+  };
   return (
     <div className="container py-5">
       {/* service part  */}
@@ -98,6 +121,7 @@ const ServiceDetail = () => {
             <ReviewCard
               key={review._id + Math.random(55)}
               review={review}
+              handleDelete={handleDelete}
             ></ReviewCard>
           ))}
         </div>
@@ -137,6 +161,7 @@ const ServiceDetail = () => {
           </>
         )}
       </div>
+      <Toaster></Toaster>
       <ScrollRestoration />
     </div>
   );

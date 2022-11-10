@@ -5,7 +5,11 @@ const SingleCard = ({ blog }) => {
   return (
     <div className="card w-full bg-base-100 border border-borderTheme">
       <figure className="w-full">
-        <img src={blogImage} alt="Shoes" className="w-full" />
+        <img
+          src={blogImage}
+          alt="blogTitle"
+          className="w-full h-72 md:h-80 object-cover"
+        />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{blogTitle}</h2>

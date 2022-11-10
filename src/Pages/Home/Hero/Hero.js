@@ -8,7 +8,7 @@ const Hero = () => {
       <div>
         <h3 className="uppercase text-lg">WE ARE HERE TO SERVE</h3>
         <h1 className="text-6xl font-titles mb-5 leading-snug">
-          Committed to providing<br></br> Legal clarity & Sound counsel
+          Find the Best law firm<br></br> in the town
         </h1>
         <div className="grid grid-cols-3 mt-5 mb-10">
           <div className="space-y-3">

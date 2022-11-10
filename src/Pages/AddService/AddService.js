@@ -2,8 +2,10 @@ import React, { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import { AuthContext } from "../../context/AuthProvider";
+import useTitle from "../../customHooks/useTitle";
 const AddService = () => {
   const { user } = useContext(AuthContext);
+  useTitle("Add Services");
   const {
     register,
     handleSubmit,
@@ -13,7 +15,7 @@ const AddService = () => {
   } = useForm();
   const onSubmit = (data) => {
     data["author"] = user.email;
-    fetch(`http://localhost:5000/addService`, {
+    fetch(`https://precision-law-server.vercel.app/addService`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

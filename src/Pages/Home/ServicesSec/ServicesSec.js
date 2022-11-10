@@ -8,7 +8,7 @@ const ServicesSec = () => {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/lastServices`)
+    fetch(`https://precision-law-server.vercel.app/lastServices`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);

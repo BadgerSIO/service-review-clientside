@@ -28,7 +28,7 @@ const AuthProvider = ({ children }) => {
   //signin with email and pass
   const login = async (email, password) => {
     setLoading(true);
-    await signInWithEmailAndPassword(auth, email, password);
+    return signInWithEmailAndPassword(auth, email, password);
   };
 
   //register with email,pass
@@ -39,12 +39,14 @@ const AuthProvider = ({ children }) => {
       displayName: uname,
       photoURL: uphoto,
     });
+    logout();
     const username = auth.currentUser;
     setUser({ ...username });
   };
 
   // signout
   const logout = () => {
+    localStorage.removeItem("pmToken");
     return signOut(auth);
   };
   useEffect(() => {
@@ -62,6 +64,7 @@ const AuthProvider = ({ children }) => {
     createuser,
     login,
     logout,
+    setLoading,
   };
   return (
     <AuthContext.Provider value={authinfo}>{children}</AuthContext.Provider>
