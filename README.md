@@ -4,6 +4,8 @@ This is a service review website about law firms in town. Here your can know abo
 
 ### Website Link: "https://precision-law.web.app/"
 
+### Server side repo link: "https://github.com/BadgerSIO/service-review-server"
+
 ### Technologies used for building this website and website functionalities.
 
 - This website is build using react.
