@@ -6,6 +6,7 @@ import useTitle from "../../customHooks/useTitle";
 const Login = () => {
   const { googleSignUp, login } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState("");
   const navigate = useNavigate();
   useTitle("Login");
   const location = useLocation();
@@ -63,13 +64,17 @@ const Login = () => {
           .then((res) => res.json())
           .then(async (data) => {
             if (data) {
-              setLoading(true);
+              setLoading(false);
               localStorage.setItem("pmToken", data?.token);
               navigate(from, { replace: true });
             }
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setLoading(false);
+        setErrors(`${err}`);
+        console.log(err);
+      });
   };
   if (loading) {
     return (
@@ -100,6 +105,14 @@ const Login = () => {
             <button className="w-full border py-2 hover:bg-black/50">
               Login
             </button>
+
+            {errors ? (
+              <p className="text-red-500 text-center">
+                <small>{errors}</small>
+              </p>
+            ) : (
+              <></>
+            )}
           </form>
           <p className="text-center py-5 font-titles">OR</p>
           <button
